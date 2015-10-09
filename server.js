@@ -29,7 +29,7 @@ var express        = require('express'),
 server.set('views', './views');
 server.set('view engine', 'ejs');
 server.set('layout', 'myLayout');
-server.use(morgan(dev));
+server.use(morgan('dev'));
 server.use(expressLayouts);
 server.use(express.static('./public'));
 server.use(bodyParser.urlencoded({
@@ -73,7 +73,7 @@ server.listen(PORT, function () {
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
 /////////////////////////////////////////////////////
-server.get('/posts/', function (req, res) {
+server.get('/posts', function (req, res) {
   res.write("THIS SHOWS ALL POSTS");
   res.end();
 });
