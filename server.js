@@ -9,7 +9,6 @@ var express        = require('express'),
     dbname         = "forum",
     mongoose       = require('mongoose'),
     morgan         = require('morgan'),
-    session        = require('session'),
     methodOverride = require('method-override'),
     bodyParser     = require('body-parser'),
     nodemon        = require('nodemon'),
@@ -19,8 +18,7 @@ var express        = require('express'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
     Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js'),
-    session        = require('express-session');
+    User           = require('./models/user.js');
 
 
 
@@ -29,7 +27,7 @@ var express        = require('express'),
 ///////////////////////////////////////////////////
 server.set('views', './views');
 server.set('view engine', 'ejs');
-server.set('layout', 'myLayout');
+// server.set('layout', 'myLayout');
 server.use(morgan('dev'));
 server.use(expressLayouts);
 server.use(express.static('./public'));
@@ -38,11 +36,6 @@ server.use(bodyParser.urlencoded({
 }));
 server.use(methodOverride('_method'));
 module.exports = server;
-server.use(session({
-  secret: "ENCRYPTED PASSPHRASE",
-  resave: true,
-  saveUninitialized: true
-}));
 
 
 ///////////////////////////////////////////////////////
@@ -74,7 +67,7 @@ server.listen(PORT, function () {
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
 /////////////////////////////////////////////////////
-server.get('/posts', function (req, res) {
+server.get('/posts/', function (req, res) {
   res.write("THIS SHOWS ALL POSTS");
   res.end();
 });
