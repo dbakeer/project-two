@@ -19,7 +19,8 @@ var express        = require('express'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
     Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js');
+    User           = require('./models/user.js'),
+    session        = require('express-session');
 
 
 
