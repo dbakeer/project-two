@@ -6,7 +6,7 @@ var express        = require('express');
     PORT           = process.env.PORT || 5432,
     server         = express(),
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhot:27017",
-    dbname         = "CHANGE_THIS",
+    dbname         = "forum",
     mongoose       = require('mongoose'),
     morgan         = require('morgan'),
     session        = require('session'),
@@ -18,6 +18,20 @@ var express        = require('express');
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb');
+
+
+
+/////////////////////////////////////////////////////
+//////////////////// APP ///////////////////////////
+///////////////////////////////////////////////////
+server.set('views', './views');
+server.set('view engine', 'ejs');
+server.use(express.static('./public'));
+  server.use(bodyParser.urlencoded({
+    extended: true
+}));
+server.use(methodOverride('_method'));
+
 
 
 ///////////////////////////////////////////////////////
@@ -32,6 +46,8 @@ mongoose.connect(MONGOURI + "/" + dbname);
 server.listen(PORT, function () {
   console.log("SERVER IS UP ON PORT:", PORT);
 });
+
+
 
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
@@ -58,7 +74,3 @@ server.get('/user/show', function (req, res) {
   res.write("THIS CREATES SHOWS THE USERS");
   res.end();
 });
-
-///////////////////////////////////////////////////////
-////////////////// SERVER LOGIN //////////////////////
-/////////////////////////////////////////////////////
