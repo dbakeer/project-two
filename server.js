@@ -67,10 +67,10 @@ server.listen(PORT, function () {
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
 /////////////////////////////////////////////////////
-server.get('/posts/', function (req, res) {
-  res.write("THIS SHOWS ALL POSTS");
-  res.end();
-});
+// server.get('/posts/', function (req, res) {
+//   res.write("THIS SHOWS ALL POSTS");
+//   res.end();
+// });
 
 server.get('/posts/new', function (req, res) {
   res.write("THIS CREATES NEW POSTS");
