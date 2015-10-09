@@ -2,7 +2,7 @@
 ////////////////// DEPENDENCIES //////////////////////
 /////////////////////////////////////////////////////
 
-var express        = require('express');
+var express        = require('express'),
     PORT           = process.env.PORT || 5432,
     server         = express(),
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhot:27017",
@@ -17,7 +17,9 @@ var express        = require('express');
     layouts        = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
-    mongodb        = require('mongodb');
+    mongodb        = require('mongodb'),
+    Posts          = require('./models/posts.js'),
+    User           = require('./models/user.js');
 
 
 
@@ -31,6 +33,7 @@ server.use(express.static('./public'));
     extended: true
 }));
 server.use(methodOverride('_method'));
+module.exports = server;
 
 
 
