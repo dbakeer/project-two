@@ -3,17 +3,18 @@
 /////////////////////////////////////////////////////
 
 var express        = require('express'),
-    PORT           = process.env.PORT || 3000,
+    PORT           = process.env.PORT || 5432,
     server         = express(),
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
     dbname         = "forum",
     mongoose       = require('mongoose'),
     morgan         = require('morgan'),
+    session        = require('session'),
     methodOverride = require('method-override'),
     bodyParser     = require('body-parser'),
     nodemon        = require('nodemon'),
     ejs            = require('ejs'),
-    expressLayouts = require('express-ejs-layouts'),
+    layouts        = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
@@ -27,32 +28,19 @@ var express        = require('express'),
 ///////////////////////////////////////////////////
 server.set('views', './views');
 server.set('view engine', 'ejs');
-// server.set('layout', 'myLayout');
-server.use(morgan('dev'));
-server.use(expressLayouts);
 server.use(express.static('./public'));
-server.use(bodyParser.urlencoded({
-  extended: true
+  server.use(bodyParser.urlencoded({
+    extended: true
 }));
 server.use(methodOverride('_method'));
 module.exports = server;
 
-
-///////////////////////////////////////////////////////
-///////////////// "IMPORTING" MODELS /////////////////
-/////////////////////////////////////////////////////
-var postsModel = require('./models/posts.js');
-server.use('/posts', postsModel);
-
-var userModel = require('./models/user.js');
-server.use('/user', userModel);
 
 
 ///////////////////////////////////////////////////////
 ///////////////////// BASE PAGE //////////////////////
 /////////////////////////////////////////////////////
 server.get('/', function (req, res) {
-  res.render('aView', { layout: 'layoutMain'});
   res.write("THIS IS THE FRONT PAGE!");
   res.end();
 });
@@ -67,10 +55,10 @@ server.listen(PORT, function () {
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
 /////////////////////////////////////////////////////
-// server.get('/posts/', function (req, res) {
-//   res.write("THIS SHOWS ALL POSTS");
-//   res.end();
-// });
+server.get('/posts/', function (req, res) {
+  res.write("THIS IS THE POST HOMEPAGE");
+  res.end();
+});
 
 server.get('/posts/new', function (req, res) {
   res.write("THIS CREATES NEW POSTS");
@@ -78,14 +66,18 @@ server.get('/posts/new', function (req, res) {
 });
 
 server.get('/posts/show', function (req, res) {
-  res.write("THIS CREATES SHOWS ALL POSTS");
+  res.write("THIS SHOWS ALL POSTS");
   res.end();
 });
-
 
 ///////////////////////////////////////////////////////
 /////////////////// USER ROUTES //////////////////////
 /////////////////////////////////////////////////////
+server.get('/user/', function (req, res) {
+  res.write("THIS IS THE USER HOMEPAGE");
+  res.end();
+});
+
 server.get('/user/new', function (req, res) {
   res.write("THIS CREATES NEW USERS");
   res.end();
