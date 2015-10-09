@@ -15,7 +15,7 @@ var userSchema = new Schema({
 });
 
 // CREATION OF POSTS MODEL
-var User = mongoose.model('User', postsSchema);
+var User = mongoose.model('User', userSchema);
 
 // EXPORT THE POSTS MODEL
 module.exports = User;
