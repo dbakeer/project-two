@@ -5,7 +5,7 @@
 var express        = require('express'),
     PORT           = process.env.PORT || 3000,
     server         = express(),
-    MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhot:27017",
+    MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
     dbname         = "forum",
     mongoose       = require('mongoose'),
     morgan         = require('morgan'),
