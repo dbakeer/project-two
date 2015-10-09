@@ -74,6 +74,6 @@ server.get('/user/new', function (req, res) {
 });
 
 server.get('/user/show', function (req, res) {
-  res.write("THIS CREATES SHOWS THE USERS");
+  res.write("THIS SHOWS THE USER PROFILE");
   res.end();
 });
