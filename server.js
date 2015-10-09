@@ -14,7 +14,7 @@ var express        = require('express'),
     bodyParser     = require('body-parser'),
     nodemon        = require('nodemon'),
     ejs            = require('ejs'),
-    layouts        = require('express-ejs-layouts'),
+    expressLayouts = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
@@ -28,19 +28,37 @@ var express        = require('express'),
 ///////////////////////////////////////////////////
 server.set('views', './views');
 server.set('view engine', 'ejs');
+server.set('layout', 'myLayout');
+server.use(morgan(dev));
+server.use(expressLayouts);
 server.use(express.static('./public'));
-  server.use(bodyParser.urlencoded({
-    extended: true
+server.use(bodyParser.urlencoded({
+  extended: true
 }));
 server.use(methodOverride('_method'));
 module.exports = server;
+server.use(session({
+  secret: "ENCRYPTED PASSPHRASE",
+  resave: true,
+  saveUninitialized: true
+}));
 
+
+///////////////////////////////////////////////////////
+///////////////// "IMPORTING" MODELS /////////////////
+/////////////////////////////////////////////////////
+var postsModel = require('./models/posts.js');
+server.use('/posts', postsModel);
+
+var userModel = require('./models/user.js');
+server.use('/user', userModel);
 
 
 ///////////////////////////////////////////////////////
 ///////////////////// BASE PAGE //////////////////////
 /////////////////////////////////////////////////////
 server.get('/', function (req, res) {
+  res.render('aView', { layout: 'layoutMain'});
   res.write("THIS IS THE FRONT PAGE!");
   res.end();
 });
@@ -55,6 +73,11 @@ server.listen(PORT, function () {
 ///////////////////////////////////////////////////////
 /////////////////// POST ROUTES //////////////////////
 /////////////////////////////////////////////////////
+server.get('/posts/', function (req, res) {
+  res.write("THIS SHOWS ALL POSTS");
+  res.end();
+});
+
 server.get('/posts/new', function (req, res) {
   res.write("THIS CREATES NEW POSTS");
   res.end();
@@ -64,6 +87,7 @@ server.get('/posts/show', function (req, res) {
   res.write("THIS CREATES SHOWS ALL POSTS");
   res.end();
 });
+
 
 ///////////////////////////////////////////////////////
 /////////////////// USER ROUTES //////////////////////
