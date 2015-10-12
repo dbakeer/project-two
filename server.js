@@ -5,11 +5,11 @@
 var express        = require('express'),
     PORT           = process.env.PORT || 3000,
     server         = express(),
-    MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
+    MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost/forum",
     dbname         = "forum",
     mongoose       = require('mongoose'),
-    Schema         = mongoose.Schema,
-    ObjectID       = Schema.ObjectID,
+    Posts          = require("./models/posts").Posts,
+    User           = require("./models/user").User,
     morgan         = require('morgan'),
     session        = require('session'),
     methodOverride = require('method-override'),
@@ -19,11 +19,7 @@ var express        = require('express'),
     expressLayouts = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
-    mongodb        = require('mongodb'),
-    Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js');
-
-// "installing" the Schemas
+    mongodb        = require('mongodb');
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
@@ -35,6 +31,8 @@ server.use(morgan('dev'));
 server.use(express.static('./public'));
 
 server.use(expressLayouts);
+
+mongoose.createConnection('mongodb://localhost/forum');
 
 server.use(methodOverride('_method'));
 // forms post to "/action?_method=SOMETHING"
@@ -66,8 +64,7 @@ server.listen(PORT, function () {
 
 // create new user
 server.get('/user/', function (req, res) {
-  res.render();
-  res.end();
+  res.render('./user');
 });
 
 // form for setting up a new user
@@ -77,8 +74,7 @@ server.get('/user/new', function (req, res) {
 
 // show all users
 server.get('/user/show', function (req, res) {
-  res.write("THIS SHOWS THE USER PROFILE");
-  res.end();
+  res.render('./user/show');
 });
 
 
@@ -89,18 +85,15 @@ server.get('/user/show', function (req, res) {
 
 // create new post
 server.get('/posts/', function (req, res) {
-  res.write("THIS IS THE POST HOMEPAGE");
-  res.end();
+  res.render('./posts');
 });
 
 // form for new posts
 server.get('/posts/new', function (req, res) {
-  res.write("THIS CREATES NEW POSTS");
-  res.end();
+  res.render('./posts/new');
 });
 
 // show all new posts
 server.get('/posts/show', function (req, res) {
-  res.write("THIS SHOWS ALL POSTS");
-  res.end();
+  res.render('./posts/show');
 });

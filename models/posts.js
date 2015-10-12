@@ -10,11 +10,12 @@ var mongoose = require('mongoose'),
 var postsSchema = new Schema({
   title: String,
   author: String,
-  comments: { String }
+  content: { String }
 });
 
 // CREATION OF POSTS MODEL
 var Posts = mongoose.model('Posts', postsSchema);
+
 
 // EXPORT THE POSTS MODEL
 module.exports = Posts;
