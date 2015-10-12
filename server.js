@@ -65,6 +65,28 @@ server.use('/posts', postsController);
 
 
 ///////////////////////////////////////////////////////
+/////////////////// GENERAL ROUTES ///////////////////
+/////////////////////////////////////////////////////
+server.get('/', function (req, res){
+  res.redirect('/users/new');
+});
+
+server.get('/logout', function (req, res){
+  req.session.destroy(function (err){
+    if (err){
+      console.log(err);
+    } else {
+      res.redirect('/users/login')
+    };
+  });
+});
+
+// // 404
+// server.use(function (req, res){
+//   res.render('whoops');
+// });
+
+///////////////////////////////////////////////////////
 /////////////////// USER ROUTES //////////////////////
 /////////////////////////////////////////////////////
 
