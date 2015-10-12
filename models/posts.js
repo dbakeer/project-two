@@ -8,7 +8,7 @@ var express  = require('express'),
     Schema   = mongoose.Schema;
 
 // DEFINING THE SCHEMA
-var postsSchema = new Schema({
+var postsSchema = Schema({
   author: { type: String, required: true },
   title: { type: String, required: true },
   content: { type: String, required: true },
@@ -16,8 +16,7 @@ var postsSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-// CREATION OF POSTS MODEL
-var Posts = mongoose.model('Posts', postsSchema);
+var Posts = mongoose.model("Posts", postsSchema);
 
 
 // EXPORT THE POSTS MODEL

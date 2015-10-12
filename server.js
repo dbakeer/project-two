@@ -17,7 +17,9 @@ var PORT           = process.env.PORT || 3000,
     expressLayouts = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
-    mongodb        = require('mongodb');
+    mongodb        = require('mongodb'),
+    Posts          = require('./models/posts.js'),
+    User           = require('./models/user.js');
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
@@ -43,22 +45,6 @@ mongoose.connect(MONGOURI + "/" + dbname);
 server.listen(PORT, function () {
   console.log("SERVER IS UP ON PORT:", PORT);
 });
-
-// SESSION
-server.use(session({
-  secret: "ENCRYPT THIS",
-  resave: false,
-  saveUninitialized: false
-}));
-
-///////////////////////////////////////////////////////
-///////////////"INSTALLING" SCHEMAS //////////////////
-/////////////////////////////////////////////////////
-var userControl = require('./models/user.js');
-server.use('/user', userControl);
-
-var postsControl = require('./models/posts.js');
-server.use('/posts', postsControl);
 
 
 ///////////////////////////////////////////////////////
@@ -102,6 +88,13 @@ server.get('/posts', function (req, res) {
 // form for new posts
 server.get('/posts/new', function (req, res) {
   res.render('./posts/new');
+});
+
+server.post('/', function (req, res){
+  var newPost = Posts(req.body.post);
+  newPost.save(function (err, user){
+    res.redirect(301, './posts/index')
+  });
 });
 
 // show all new posts
