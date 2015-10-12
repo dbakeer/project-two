@@ -62,10 +62,10 @@ server.listen(PORT, function () {
 /////////////////// USER ROUTES //////////////////////
 /////////////////////////////////////////////////////
 
-// // create new user
-// server.get('/user/', function (req, res) {
-//   res.render('./user');
-// });
+// create new user
+server.get('/user', function (req, res) {
+  res.render('./user/index');
+});
 
 // form for setting up a new user
 server.get('/user/new', function (req, res) {
@@ -84,9 +84,9 @@ server.get('/user/show', function (req, res) {
 /////////////////////////////////////////////////////
 
 // create new post
-// server.get('./posts/', function (req, res) {
-//   res.render('/');
-// });
+server.get('/posts', function (req, res) {
+  res.render('./posts/index');
+});
 
 // form for new posts
 server.get('/posts/new', function (req, res) {

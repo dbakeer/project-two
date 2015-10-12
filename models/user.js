@@ -13,6 +13,7 @@ var userSchema = new Schema({
   password: String,
 });
 
+
 // CREATION OF POSTS MODEL
 var User = mongoose.model('User', userSchema);
 
