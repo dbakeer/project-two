@@ -33,11 +33,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = server;
 
-mongoose.connect(MONGOURI + "/" + dbname);
-server.listen(PORT, function () {
-  console.log("SERVER IS UP ON PORT:", PORT);
-});
-
 server.use(session({
   secret: "ENCRYPTTHIS",
   resave: false,
@@ -47,9 +42,16 @@ server.use(session({
 ///////////////////////////////////////////////////////
 //////////////////// DATABASE  ///////////////////////
 /////////////////////////////////////////////////////
+mongoose.connect(MONGOURI + "/" + dbname);
+
+server.listen(PORT, function () {
+  console.log("SERVER IS UP ON PORT:", PORT);
+});
+
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
+
 db.once('open', function() {
   console.log("DATABASE UP");
 });
@@ -76,8 +78,8 @@ server.get('/logout', function (req, res){
     if (err){
       console.log(err);
     } else {
-      res.redirect('/users/login')
-    };
+      res.redirect('/users/login');
+    }
   });
 });
 
