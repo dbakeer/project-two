@@ -9,9 +9,11 @@ var express  = require('express'),
 
 // DEFINING THE SCHEMA
 var postsSchema = new Schema({
-  title: String,
-  author: String,
-  content: { String }
+  author: { type: String, required: true },
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  comments: [{ body: String, date: { type: Date, default: Date.now}, author: String }],
+  date: { type: Date, default: Date.now }
 });
 
 // CREATION OF POSTS MODEL
