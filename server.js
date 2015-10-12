@@ -19,7 +19,8 @@ var express        = require('express'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
     Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js');
+    User           = require('./models/user.js'),
+    bootStrap      = require('bootstrap');
 
 
 
@@ -33,9 +34,13 @@ server.use(express.static('./public'));
     extended: true
 }));
 server.use(methodOverride('_method'));
+// forms post to "/action?_method=SOMETHING"
 module.exports = server;
 
-
+server.use(function (req, res, next){
+  console.log("REQ DOT BODY", req.body);
+  console.log("REQ DOT SESSION", req.session);
+});
 
 ///////////////////////////////////////////////////////
 ///////////////////// BASE PAGE //////////////////////
@@ -52,38 +57,49 @@ server.listen(PORT, function () {
 
 
 
-///////////////////////////////////////////////////////
-/////////////////// POST ROUTES //////////////////////
-/////////////////////////////////////////////////////
-server.get('/posts/', function (req, res) {
-  res.write("THIS IS THE POST HOMEPAGE");
-  res.end();
-});
-
-server.get('/posts/new', function (req, res) {
-  res.write("THIS CREATES NEW POSTS");
-  res.end();
-});
-
-server.get('/posts/show', function (req, res) {
-  res.write("THIS SHOWS ALL POSTS");
-  res.end();
-});
 
 ///////////////////////////////////////////////////////
 /////////////////// USER ROUTES //////////////////////
 /////////////////////////////////////////////////////
+
+// create new user
 server.get('/user/', function (req, res) {
   res.write("THIS IS THE USER HOMEPAGE");
   res.end();
 });
 
+// form for setting up a new user
 server.get('/user/new', function (req, res) {
   res.write("THIS CREATES NEW USERS");
   res.end();
 });
 
+// show all users
 server.get('/user/show', function (req, res) {
   res.write("THIS SHOWS THE USER PROFILE");
+  res.end();
+});
+
+
+
+///////////////////////////////////////////////////////
+/////////////////// POST ROUTES //////////////////////
+/////////////////////////////////////////////////////
+
+// create new post
+server.get('/posts/', function (req, res) {
+  res.write("THIS IS THE POST HOMEPAGE");
+  res.end();
+});
+
+// form for new posts
+server.get('/posts/new', function (req, res) {
+  res.write("THIS CREATES NEW POSTS");
+  res.end();
+});
+
+// show all new posts
+server.get('/posts/show', function (req, res) {
+  res.write("THIS SHOWS ALL POSTS");
   res.end();
 });
