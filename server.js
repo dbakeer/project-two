@@ -13,7 +13,8 @@ var PORT           = process.env.PORT || 3000,
     morgan         = require('morgan'),
     session        = require('express-session'),
     methodOverride = require('method-override'),
-    expressLayouts = require('express-ejs-layouts');
+    expressLayouts = require('express-ejs-layouts'),
+    Schema         = mongoose.Schema;
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
@@ -59,34 +60,21 @@ db.once('open', function() {
 ///////////////////////////////////////////////////////
 //////////////////// CONTROLLERS /////////////////////
 /////////////////////////////////////////////////////
-var userController = require('./controllers/user.js');
-server.use('/users', userController);
 
-var postsController = require('./controllers/posts.js');
-server.use('/posts', postsController);
+// having major issues with controllers
+
+
+// var userController = require('./controllers/user.js');
+// server.use('/users', userController);
+//
+// var postsController = require('./controllers/posts.js');
+// server.use('/posts', postsController);
 
 
 ///////////////////////////////////////////////////////
 /////////////////// GENERAL ROUTES ///////////////////
 /////////////////////////////////////////////////////
-server.get('/', function (req, res){
-  res.redirect('/users/new');
-});
 
-server.get('/logout', function (req, res){
-  req.session.destroy(function (err){
-    if (err){
-      console.log(err);
-    } else {
-      res.redirect('/users/login');
-    }
-  });
-});
-
-// // 404
-// server.use(function (req, res){
-//   res.render('whoops');
-// });
 
 ///////////////////////////////////////////////////////
 /////////////////// USER ROUTES //////////////////////
