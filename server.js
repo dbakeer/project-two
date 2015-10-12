@@ -57,18 +57,11 @@ db.once('open', function() {
 ///////////////////////////////////////////////////////
 //////////////////// CONTROLLERS /////////////////////
 /////////////////////////////////////////////////////
-// var userController = require('./controllers/user.js');
-// server.use('/users', userController);
-//
-// var postsController = require('./controllers/posts.js');
-// server.use('/posts', postsController);
+var userController = require('./controllers/user.js');
+server.use('/users', userController);
 
-///////////////////////////////////////////////////////
-////////////////// BASE PAGES/NAVS ///////////////////
-/////////////////////////////////////////////////////
-server.get('/', function (req, res) {
-  res.redirect('/user/new');
-});
+var postsController = require('./controllers/posts.js');
+server.use('/posts', postsController);
 
 
 ///////////////////////////////////////////////////////
@@ -97,8 +90,8 @@ server.get('/user/show', function (req, res) {
 /////////////////////////////////////////////////////
 
 // create new post
-server.get('/posts/', function (req, res) {
-  res.render('index');
+server.get('/posts', function (req, res) {
+  res.render('./posts/index');
 });
 
 // form for new posts
