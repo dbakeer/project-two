@@ -13,13 +13,7 @@ var PORT           = process.env.PORT || 3000,
     morgan         = require('morgan'),
     session        = require('express-session'),
     methodOverride = require('method-override'),
-    nodemon        = require('nodemon'),
-    expressLayouts = require('express-ejs-layouts'),
-    marked         = require('marked'),
-    bCrypt         = require('bcrypt'),
-    mongodb        = require('mongodb'),
-    Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js');
+    expressLayouts = require('express-ejs-layouts');
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
@@ -31,8 +25,6 @@ server.use(morgan('dev'));
 server.use(express.static('./public'));
 
 server.use(expressLayouts);
-
-mongoose.createConnection('mongodb://localhost/forum');
 
 server.use(methodOverride('_method'));
 // forms post to "/action?_method=SOMETHING"
@@ -46,12 +38,36 @@ server.listen(PORT, function () {
   console.log("SERVER IS UP ON PORT:", PORT);
 });
 
+server.use(session({
+  secret: "ENCRYPTTHIS",
+  resave: false,
+  saveUninitialized: false
+}));
+
+///////////////////////////////////////////////////////
+//////////////////// DATABASE  ///////////////////////
+/////////////////////////////////////////////////////
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("DATABASE UP");
+});
+
+///////////////////////////////////////////////////////
+//////////////////// CONTROLLERS /////////////////////
+/////////////////////////////////////////////////////
+// var userController = require('./controllers/user.js');
+// server.use('/users', userController);
+//
+// var postsController = require('./controllers/posts.js');
+// server.use('/posts', postsController);
 
 ///////////////////////////////////////////////////////
 ////////////////// BASE PAGES/NAVS ///////////////////
 /////////////////////////////////////////////////////
 server.get('/', function (req, res) {
-  res.redirect('index');
+  res.redirect('/user/new');
 });
 
 
@@ -81,20 +97,13 @@ server.get('/user/show', function (req, res) {
 /////////////////////////////////////////////////////
 
 // create new post
-server.get('/posts', function (req, res) {
-  res.render('./posts/index');
+server.get('/posts/', function (req, res) {
+  res.render('index');
 });
 
 // form for new posts
 server.get('/posts/new', function (req, res) {
   res.render('./posts/new');
-});
-
-server.post('/', function (req, res){
-  var newPost = Posts(req.body.post);
-  newPost.save(function (err, user){
-    res.redirect(301, './posts/index')
-  });
 });
 
 // show all new posts
