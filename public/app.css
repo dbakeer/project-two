@@ -1,0 +1,14 @@
+/* Sitewide view */
+
+* {
+    font: inherit;
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  background: deeppink;
+}

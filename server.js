@@ -16,7 +16,7 @@ var express        = require('express'),
     bodyParser     = require('body-parser'),
     nodemon        = require('nodemon'),
     ejs            = require('ejs'),
-    layouts        = require('express-ejs-layouts'),
+    expressLayouts = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
@@ -24,20 +24,23 @@ var express        = require('express'),
     User           = require('./models/user.js');
 
 // "installing" the Schemas
-require('./models/user.js').User(Schema, mongoose);
-require('./models/posts.js').Posts(Schema, mongoose);
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
 ///////////////////////////////////////////////////
-server.set('views', './views');
 server.set('view engine', 'ejs');
+server.set('views', './views');
+
+server.use(morgan('dev'));
 server.use(express.static('./public'));
-  server.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+server.use(expressLayouts);
+
 server.use(methodOverride('_method'));
 // forms post to "/action?_method=SOMETHING"
+
+server.use(bodyParser.urlencoded({ extended: true }));
+
 module.exports = server;
 
 
@@ -63,14 +66,13 @@ server.listen(PORT, function () {
 
 // create new user
 server.get('/user/', function (req, res) {
-  res.write("THIS IS THE USER HOMEPAGE");
+  res.render();
   res.end();
 });
 
 // form for setting up a new user
 server.get('/user/new', function (req, res) {
-  res.write("THIS CREATES NEW USERS");
-  res.end();
+  res.render('./user/new');
 });
 
 // show all users
