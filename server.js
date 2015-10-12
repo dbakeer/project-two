@@ -2,20 +2,17 @@
 ////////////////// DEPENDENCIES //////////////////////
 /////////////////////////////////////////////////////
 
-var express        = require('express'),
-    PORT           = process.env.PORT || 3000,
-    server         = express(),
+var PORT           = process.env.PORT || 3000,
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost/forum",
-    dbname         = "forum",
-    mongoose       = require('mongoose'),
-    Posts          = require("./models/posts").Posts,
-    User           = require("./models/user").User,
-    morgan         = require('morgan'),
-    session        = require('session'),
-    methodOverride = require('method-override'),
-    bodyParser     = require('body-parser'),
-    nodemon        = require('nodemon'),
+    express        = require('express'),
+    server         = express(),
     ejs            = require('ejs'),
+    bodyParser     = require('body-parser'),
+    mongoose       = require('mongoose'),
+    morgan         = require('morgan'),
+    session        = require('express-session'),
+    methodOverride = require('method-override'),
+    nodemon        = require('nodemon'),
     expressLayouts = require('express-ejs-layouts'),
     marked         = require('marked'),
     bCrypt         = require('bcrypt'),
@@ -41,18 +38,33 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = server;
 
-
-///////////////////////////////////////////////////////
-///////////////////// BASE PAGE //////////////////////
-/////////////////////////////////////////////////////
-server.get('/', function (req, res) {
-  res.write("THIS IS THE FRONT PAGE!");
-  res.end();
-});
-
 mongoose.connect(MONGOURI + "/" + dbname);
 server.listen(PORT, function () {
   console.log("SERVER IS UP ON PORT:", PORT);
+});
+
+// SESSION
+server.use(session({
+  secret: "ENCRYPT THIS",
+  resave: false,
+  saveUninitialized: false
+}));
+
+///////////////////////////////////////////////////////
+///////////////"INSTALLING" SCHEMAS //////////////////
+/////////////////////////////////////////////////////
+var userControl = require('./models/user.js');
+server.use('/user', userControl);
+
+var postsControl = require('./models/posts.js');
+server.use('/posts', postsControl);
+
+
+///////////////////////////////////////////////////////
+////////////////// BASE + ALL PAGE ///////////////////
+/////////////////////////////////////////////////////
+server.get('/', function (req, res) {
+  rest.redirect('/');
 });
 
 
