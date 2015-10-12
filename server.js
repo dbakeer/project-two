@@ -4,6 +4,7 @@
 
 var PORT           = process.env.PORT || 3000,
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost/forum",
+    dbname         = "forum";
     express        = require('express'),
     server         = express(),
     ejs            = require('ejs'),
@@ -64,11 +65,7 @@ server.use('/posts', postsControl);
 ////////////////// BASE PAGES/NAVS ///////////////////
 /////////////////////////////////////////////////////
 server.get('/', function (req, res) {
-  rest.redirect('index');
-});
-
-server.use(function(req, res){
-  res.render('whoops');
+  res.redirect('index');
 });
 
 
