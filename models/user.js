@@ -8,10 +8,9 @@ var mongoose = require('mongoose'),
 
 // DEFINING THE SCHEMA
 var userSchema = new Schema({
-  usernname: String,
-  date: String,
-  text: String,
-  comments: { String }
+  name: String,
+  info: String,
+  password: String,
 });
 
 // CREATION OF POSTS MODEL

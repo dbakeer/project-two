@@ -8,6 +8,8 @@ var express        = require('express'),
     MONGOURI       = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
     dbname         = "forum",
     mongoose       = require('mongoose'),
+    Schema         = mongoose.Schema,
+    ObjectID       = Schema.ObjectID,
     morgan         = require('morgan'),
     session        = require('session'),
     methodOverride = require('method-override'),
@@ -19,10 +21,11 @@ var express        = require('express'),
     bCrypt         = require('bcrypt'),
     mongodb        = require('mongodb'),
     Posts          = require('./models/posts.js'),
-    User           = require('./models/user.js'),
-    bootStrap      = require('bootstrap');
+    User           = require('./models/user.js');
 
-
+// "installing" the Schemas
+require('./models/user.js').User(Schema, mongoose);
+require('./models/posts.js').Posts(Schema, mongoose);
 
 /////////////////////////////////////////////////////
 //////////////////// APP ///////////////////////////
@@ -37,10 +40,6 @@ server.use(methodOverride('_method'));
 // forms post to "/action?_method=SOMETHING"
 module.exports = server;
 
-server.use(function (req, res, next){
-  console.log("REQ DOT BODY", req.body);
-  console.log("REQ DOT SESSION", req.session);
-});
 
 ///////////////////////////////////////////////////////
 ///////////////////// BASE PAGE //////////////////////
