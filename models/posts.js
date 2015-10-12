@@ -3,7 +3,8 @@
 /////////////////////////////////////////////////////
 
 // MONGOOSE NONSENSE
-var mongoose = require('mongoose'),
+var express  = require('express'),
+    mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
 // DEFINING THE SCHEMA
