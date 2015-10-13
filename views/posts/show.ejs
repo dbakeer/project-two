@@ -8,16 +8,19 @@
     <%= posts.content %>
   </div>
   <div class = "post-comments">
-  <%= posts.comments %>
+  <%= posts.comments.username %>
+  <%= posts.comments.body %>
+  <%= posts.comments.date %>
 </div>
-<h4 id = "commentheader">Comment!</h4>
-<form action="/posts/:id/comments" method="post">
+
+<!-- <h4 id = "commentheader">Comment!</h4>
+<form action="/posts/<%= posts.id %>?_method=POST/" method="post">
     <input type="text"
-           name="comment"
-           value="comment"
+           name="post[comments][body]"
+           value=""
            id = "comment">
     <input type = "submit"
-           name="comment"
+           name="posts[comments]"
            value="SUBMIT"
            id = "comment-button">
-</form>
+</form> -->
