@@ -1,11 +1,6 @@
 <form action="/posts/<%= posts.id %>?_method=PATCH" method="post">
 
-<div class="form-group">
-  <input type="text"
-         name="posts[author]"
-         placeholder="Author"
-         value ="<%= posts.author %>"></br>
-</div>
+<%= posts.author %>
 
 <div class="form-group">
   <input type="text"

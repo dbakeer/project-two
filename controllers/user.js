@@ -28,12 +28,11 @@ router.post('/', function (req, res) {
   });
 });
 
+// LOGIN
 router.get('/login', function (req, res){
   res.render('user/login');
 });
 
-
-// LOGIN
 router.post('/login', function (req, res) {
   var attempt = req.body.user;
 

@@ -108,19 +108,4 @@ router.patch('/:id', function (req, res) {
   });
 });
 
-// comments
-// router.post('/:id', function (req, res) {
-//   var newComment = req.body.post;
-//   newComment.comments.author = req.session.currentUser;
-//   console.log(newComment);
-//
-//   var postId = req.paramds.id;
-//   Post.update({_id: postId},
-//   {$push: newComment}, function (){
-//     (res.redirect('/posts/' + postId)
-//     );
-//   });
-// });
-
-
 module.exports = router;
