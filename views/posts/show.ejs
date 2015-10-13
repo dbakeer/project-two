@@ -11,7 +11,7 @@
   <%= posts.comments %>
 </div>
 <h4 id = "commentheader">Comment!</h4>
-<form>
+<form action="/posts/:id/comments" method="post">
     <input type="text"
            name="comment"
            value="comment"

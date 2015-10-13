@@ -31,7 +31,7 @@ router.get('/new', function (req, res) {
 router.get('/:id', function (req, res){
   if (req.session.currentUser) {
     Post.findById(req.params.id, function (err, result) {
-      res.render('posts/:id/show', {
+      res.render('posts/show', {
         posts: result,
         currentUser: req.session.currentUser
       });
@@ -109,8 +109,6 @@ router.patch('/:id', function (req, res) {
 });
 
 // comments
-router.get('/posts/:id', function (req, res) {
-  var newComment = req.params.id;
-});
+
 
 module.exports = router;
