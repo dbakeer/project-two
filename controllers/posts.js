@@ -44,19 +44,20 @@ router.delete('/:id', function (req, res) {
   });
 });
 
-router.delete('/:id', function (req, res) {
-  var postID = req.params.id;
-
-  Post.remove({
-    _id: postID
-  }, function (err) {
-    if (err) {
-      console.log(302, '/posts/', "CANNOT DELETE");
-    } else {
-      res.redirect(302, '/posts/');
-    }
+// edit a post
+router.get('/:id/edit', function (req, res){
+  Post.findById(req.params.id, function (err, result){
+  res.render('posts/edit', { post: result  });
   });
 });
 
+// update a post
+router.patch("/:id", function (req, res) {
+  Post.findById(req.params.id, function (err, result){
+    Post.update(result, req.body.post, function(){
+      res.redirect(301, "/posts/");
+    });
+  });
+});
 
 module.exports = router;
