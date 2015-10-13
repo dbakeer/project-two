@@ -46,17 +46,43 @@ router.delete('/:id', function (req, res) {
 
 // edit a post
 router.get('/:id/edit', function (req, res) {
-    Post.findById(req.params.id, function (err, result) {
-      res.render('posts/edit');
-    });
+  var postID = req.params.id;
+
+  Post.findOne({
+    _id: postID
+  }, function (err, foundPost) {
+    if (err) {
+      res.write("YOUR POST ID IS BAD");
+      res.end();
+    } else {
+      res.render('posts/edit', {
+        posts: foundPost
+      });
+    }
+  });
 });
 
 router.patch('/:id', function (req, res) {
-  Post.findById(req.params.id, function (err, result) {
-    Post.update(result, req.body.post, function (){
-      res.redirect(302, "/posts/");
-    });
+  var postID = req.params.id;
+  var postParams = req.body.posts;
+
+  Post.findOne({
+    _id: postID
+  }, function (err, foundPost) {
+    if (err) {
+
+    } else {
+      foundPost.update(postParams, function (errTwo, post) {
+        if (errTwo) {
+          console.log("ERROR UPDATING");
+        } else {
+          console.log("UPDATED!");
+          res.redirect(302, "/posts");
+        }
+      });
+    }
   });
 });
+
 
 module.exports = router;
