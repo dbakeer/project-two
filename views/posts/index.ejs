@@ -5,7 +5,7 @@
     <p>
       <%= posts.title %> --- <%= posts.author %> --- <%= posts.content %>
 
-      <a href = "/posts/<% posts.id %>/edit">EDIT</a>
+      <a href = "/posts/<%= posts.id %>/edit">EDIT</a>
 
       <form action="/posts/<%= posts.id %>?_method=DELETE"
             method="post">

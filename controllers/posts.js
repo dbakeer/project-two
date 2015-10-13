@@ -45,17 +45,16 @@ router.delete('/:id', function (req, res) {
 });
 
 // edit a post
-router.get('/:id/edit', function (req, res){
-  Post.findById(req.params.id, function (err, result){
-  res.render('posts/edit', { post: result  });
-  });
+router.get('/:id/edit', function (req, res) {
+    Post.findById(req.params.id, function (err, result) {
+      res.render('posts/edit');
+    });
 });
 
-// update a post
-router.patch("/:id", function (req, res) {
-  Post.findById(req.params.id, function (err, result){
-    Post.update(result, req.body.post, function(){
-      res.redirect(301, "/posts/");
+router.patch('/:id', function (req, res) {
+  Post.findById(req.params.id, function (err, result) {
+    Post.update(result, req.body.post, function (){
+      res.redirect(302, "/posts/");
     });
   });
 });
