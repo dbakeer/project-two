@@ -61,57 +61,15 @@ db.once('open', function() {
 //////////////////// CONTROLLERS /////////////////////
 /////////////////////////////////////////////////////
 
-// having major issues with controllers
-
-
 // var userController = require('./controllers/user.js');
-// server.use('/users', userController);
-//
-// var postsController = require('./controllers/posts.js');
-// server.use('/posts', postsController);
+// server.use('/user', userController);
 
+var postsController = require('./controllers/posts.js');
+server.use('/posts', postsController);
 
 ///////////////////////////////////////////////////////
 /////////////////// GENERAL ROUTES ///////////////////
 /////////////////////////////////////////////////////
-
-
-///////////////////////////////////////////////////////
-/////////////////// USER ROUTES //////////////////////
-/////////////////////////////////////////////////////
-
-// create new user
-server.get('/user', function (req, res) {
-  res.render('./user/index');
-});
-
-// form for setting up a new user
-server.get('/user/new', function (req, res) {
-  res.render('./user/new');
-});
-
-// show all users
-server.get('/user/show', function (req, res) {
-  res.render('./user/show');
-});
-
-
-
-///////////////////////////////////////////////////////
-/////////////////// POST ROUTES //////////////////////
-/////////////////////////////////////////////////////
-
-// create new post
-server.get('/posts', function (req, res) {
-  res.render('./posts/index');
-});
-
-// form for new posts
-server.get('/posts/new', function (req, res) {
-  res.render('./posts/new');
-});
-
-// show all new posts
-server.get('/posts/show', function (req, res) {
-  res.render('./posts/show');
+server.get('/', function (req, res) {
+  res.render('/');
 });
