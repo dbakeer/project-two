@@ -90,7 +90,6 @@ body {
 
 #post-edit {
   float: right;
-  margin-top: -13px;
   margin-right: 5px;
 }
 
@@ -123,4 +122,8 @@ body {
 
 .comments {
   margin-bottom: 50px;
+}
+
+#whoops {
+  text-align: center;
 }
