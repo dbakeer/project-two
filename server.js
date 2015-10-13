@@ -28,7 +28,6 @@ server.use(express.static('./public'));
 server.use(expressLayouts);
 
 server.use(methodOverride('_method'));
-// forms post to "/action?_method=SOMETHING"
 
 server.use(bodyParser.urlencoded({ extended: true }));
 

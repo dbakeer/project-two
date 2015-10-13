@@ -3,7 +3,7 @@ var express = require('express'),
     Post   = require('../models/posts.js'),
     User   = require('../models/user.js');
 
-// Post-based Routes
+// show all posts
 router.get('/', function (req, res) {
   Post.find({}, function (err, allPosts) {
     if (err) {
@@ -30,8 +30,32 @@ router.post('/', function (req, res){
   });
 });
 
+// form to create new posts
 router.get('/new', function (req, res){
   res.render('posts/new');
+});
+
+// delete a post
+router.delete('/:id', function (req, res) {
+  Post.findById(req.params.id, function (err, result) {
+    result.remove(function(){
+      res.redirect(302, "/posts/");
+    });
+  });
+});
+
+router.delete('/:id', function (req, res) {
+  var postID = req.params.id;
+
+  Post.remove({
+    _id: postID
+  }, function (err) {
+    if (err) {
+      console.log(302, '/posts/', "CANNOT DELETE");
+    } else {
+      res.redirect(302, '/posts/');
+    }
+  });
 });
 
 
