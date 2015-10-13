@@ -118,7 +118,7 @@ router.post('/:id', function (req, res) {
     {_id: req.params.id},
     {$push: newComment},
     function (){
-    (res.redirect('/posts/:_id')
+    (res.redirect('/posts/')
     );
   });
 });

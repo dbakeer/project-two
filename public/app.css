@@ -107,14 +107,20 @@ body {
 .post-comments {
   background: #D6D6D6;
   text-decoration: bold;
-  height: 65px;
   font-size: 20px;
   border: 1px black solid;
   padding: 5px 0 10px 10px;
+  overflow: auto;
+  margin-top: 5px;
+  font-size: 18px;
 }
 
 #comment-button {
   text-align: center;
   margin-top: 20px;
   float: right;
+}
+
+.comments {
+  margin-bottom: 50px;
 }

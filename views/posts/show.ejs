@@ -7,20 +7,23 @@
     <div class = "post-content">
     <%= posts.content %>
   </div>
-  <div class = "post-comments">
-  <%= posts.comments.username %>
-  <%= posts.comments.body %>
-  <%= posts.comments.date %>
-</div>
 
-<!-- <h4 id = "commentheader">Comment!</h4>
-<form action="/posts/<%= posts.id %>?_method=POST/" method="post">
+<h4 id = "commentheader">Comment!</h4>
+<form action="/posts/<%= posts._id %>" method="post" class="comments">
     <input type="text"
            name="post[comments][body]"
-           value=""
+           placeholder="comment"
            id = "comment">
     <input type = "submit"
            name="posts[comments]"
            value="SUBMIT"
            id = "comment-button">
-</form> -->
+</form>
+<br/>
+<% posts.comments.forEach(function (comment, i) { %>
+<div class = "post-comments">
+<%= comment.body %><br/>
+Posted By: <%= currentUser %> --- <%= comment.date %><br/>
+
+</div>
+<% }) %>
