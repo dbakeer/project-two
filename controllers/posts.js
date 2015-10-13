@@ -4,9 +4,16 @@ var express = require('express'),
     User   = require('../models/user.js');
 
 // Post-based Routes
-
-router.get('/', function (req, res){
-  res.render('posts/index');
+router.get('/', function (req, res) {
+  Post.find({}, function (err, allPosts) {
+    if (err) {
+      res.redirect(302, 'posts/index');
+    } else {
+      res.render('posts/index', {
+        posts: allPosts
+      });
+    }
+  });
 });
 
 router.post('/', function (req, res){
