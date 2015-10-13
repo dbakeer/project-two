@@ -89,7 +89,14 @@ router.patch('/:id', function (req, res) {
 // router.post('/:id', function (req, res) {
 //   var newComment = req.body.post;
 //   newComment.comments.author = req.session.currentUser;
-//   newComment.comments.date = Date.now();
+//   console.log(newComment);
+//
+//   var postId = req.paramds.id;
+//   Post.update({_id: postId},
+//   {$push: newComment}, function (){
+//     (res.redirect('/posts/' + postId)
+//     );
+//   });
 // });
 
 
