@@ -85,5 +85,12 @@ router.patch('/:id', function (req, res) {
   });
 });
 
+// comments
+// router.post('/:id', function (req, res) {
+//   var newComment = req.body.post;
+//   newComment.comments.author = req.session.currentUser;
+//   newComment.comments.date = Date.now();
+// });
+
 
 module.exports = router;

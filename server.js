@@ -70,7 +70,7 @@ server.use('/posts', postsController);
 /////////////////// GENERAL ROUTES ///////////////////
 /////////////////////////////////////////////////////
 
-
+// 404 Error Route
 server.use(function (req, res) {
   res.render('whoops');
 });
