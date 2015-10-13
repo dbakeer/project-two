@@ -16,16 +16,39 @@ router.get('/', function (req, res) {
   });
 });
 
+// link in current user session
+router.get('/new', function (req, res) {
+  if (req.session.currentUser) {
+    res.render('posts/new', {
+      currentUser: req.session.currentUser
+    });
+  } else {
+    res.redirect(302, '../user/new');
+  }
+});
+
+// show individual post
+router.get('/:id', function (req, res){
+  if (req.session.currentUser) {
+    Post.findById(req.params.id, function (err, result) {
+      res.render('posts/show', {
+        posts: result,
+        currentUser: req.session.currentUser
+      });
+    });
+  } else {
+    res.redirect(302, '../user/new');
+  }
+});
+
 // the actual post action
 router.post('/', function (req, res){
   var posts = new Post(req.body.posts);
-  console.log(req.body);
+  posts.author = req.session.currentUser;
   posts.save(function (err, newPost){
     if (err){
       res.redirect(302, 'posts/new');
-      console.log("Post rejected");
     } else {
-      console.log("Post saved!");
       res.redirect(302, 'posts');
     }
   });

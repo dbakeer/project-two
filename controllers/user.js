@@ -2,6 +2,7 @@ var express = require('express'),
     router  = express.Router(),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
+
 // main page after logging in
 router.get('/index', function (req, res){
   if (req.session.currentUser) {
@@ -31,6 +32,8 @@ router.get('/login', function (req, res){
   res.render('user/login');
 });
 
+
+// LOGIN
 router.post('/login', function (req, res) {
   var attempt = req.body.user;
 
