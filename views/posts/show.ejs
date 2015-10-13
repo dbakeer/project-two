@@ -1,32 +1,23 @@
-<% posts.forEach(function (posts){ %>
-  <div class ="posts">
-    <p>
-      <div class = "post-title">
-        <%= posts.title %></br>
-        <h5>Posted by: <%= posts.author %> on <%= posts.date %></h5>
-      </div>
-      <div class = "post-content">
-      <%= posts.content %>
+<div class ="posts">
+  <p>
+    <div class = "post-title">
+    <%= posts.title %></br>
+      <h5>Posted by: <%= posts.author %> on <%= posts.date %></h5>
     </div>
-    <div class = "post-options">
-
-
-      <form action="/posts/<%= posts.id %>/edit"
-            method="patch">
-      <input type="submit"
-             value="Edit"
-             id = "post-edit">
-      </form>
-
-
-      <form action="/posts/<%= posts.id %>?_method=DELETE"
-            method="post">
-        <input type="submit"
-               value="Delete"
-               id = "post-edit"></form>
-      </form>
-    </div>
-
-    </p>
-    </div>
-<% }) %>
+    <div class = "post-content">
+    <%= posts.content %>
+  </div>
+  <div class = "post-comments">
+  <%= posts.comments %>
+</div>
+<h4 id = "commentheader">Comment!</h4>
+<form>
+    <input type="text"
+           name="comment"
+           value="comment"
+           id = "comment">
+    <input type = "submit"
+           name="comment"
+           value="SUBMIT"
+           id = "comment-button">
+</form>

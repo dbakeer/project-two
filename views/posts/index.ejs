@@ -4,7 +4,7 @@
   <div class ="posts">
     <p>
       <div class = "post-title">
-        <%= posts.title %></br>
+      <a href="/posts/<%= posts.id %>"><%= posts.title %></a></br>
         <h5>Posted by: <%= posts.author %> on <%= posts.date %></h5>
       </div>
       <div class = "post-content">

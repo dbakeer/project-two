@@ -93,3 +93,28 @@ body {
   margin-top: -13px;
   margin-right: 5px;
 }
+
+#commentheader {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#comment {
+  height: 200px;
+  width: 800px;
+}
+
+.post-comments {
+  background: #D6D6D6;
+  text-decoration: bold;
+  height: 65px;
+  font-size: 20px;
+  border: 1px black solid;
+  padding: 5px 0 10px 10px;
+}
+
+#comment-button {
+  text-align: center;
+  margin-top: 20px;
+  float: right;
+}
