@@ -69,9 +69,7 @@ server.use('/posts', postsController);
 ///////////////////////////////////////////////////////
 /////////////////// GENERAL ROUTES ///////////////////
 /////////////////////////////////////////////////////
-server.get('/', function (req, res) {
-  res.redirect('/user/new');
-});
+
 
 server.use(function (req, res) {
   res.render('whoops');

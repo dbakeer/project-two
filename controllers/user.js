@@ -2,6 +2,10 @@ var express = require('express'),
     router  = express.Router(),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
+// main page after logging in
+router.get('/index', function (req, res) {
+  res.render('user/index');
+});
 
 // new user page
 router.get('/new', function (req, res) {
@@ -24,7 +28,15 @@ router.post('/login', function (req, res) {
   var attempt = req.body.user;
 
   User.findOne({ username: attempt.username }, function (err, user){
-    console.log(user);
+    if (user) {
+      if (user && user.password === attempt.password) {
+        req.session.currentUser = user.username;
+
+        res.redirect(302, '/user/index');
+      }
+    } else {
+      res.redirect(302, '/user/login');
+    }
   });
 });
 
