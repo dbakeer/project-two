@@ -33,6 +33,7 @@ body {
   font-size: 18px;
   border: 1px black solid;
   padding: 10px 10px 10px 10px;
+  overflow: auto;
 
 }
 
@@ -46,4 +47,33 @@ body {
 .posts {
   margin-left: 200px;
   width: 800px;
+}
+
+#login {
+  text-align: center;
+}
+
+#logintitle {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#redirectlogin {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#username {
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#password{
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.postcontent {
+  height: 200px;
+  width: 400px;
 }

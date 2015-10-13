@@ -1,12 +1,21 @@
-<form action="/user/login" method="post">
+<h1 id = logintitle>Login</h1>
+<div id = "login">
+<form action="/user" method="post">
+
 
   <input type="text"
          name="user[username]"
-         placeholder="usernname"></br>
+         placeholder="usernname"
+         id = "username"></br>
 
   <input type="text"
          name="user[password]"
-         placeholder="Password"></br>
+         placeholder="Password"
+         id = "password"></br>
 
-  <input type="submit" value = "Log In!">
+  <input type="submit">
 </form>
+</div>
+<div id = "redirectlogin">
+<a href= "/user/new">Sign Up if You Need a new Account!</a>
+</div>

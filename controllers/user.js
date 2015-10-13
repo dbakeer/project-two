@@ -8,9 +8,32 @@ router.get('/new', function (req, res) {
   res.render('user/new');
 });
 
-router.get('/index', function (req, res) {
-  res.render('user/index');
+router.post('/index', function (req, res) {
+  var newUser = newUser(req.body.user);
+  newUser.save(function (err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      req.session.currentUser = req.body.user.username;
+      res.redirect(301, '/user/login');
+    }
+  });
 });
+
+
+// login user
+router.get('/login', function (req, res) {
+  User.find({}, function (err, allUsers) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('users/login');
+    };
+  });
+});
+
+
+
 
 // create a new user
 router.post('/', function (req, res){
@@ -25,6 +48,7 @@ router.post('/', function (req, res){
   });
 });
 
+// user login
 router.get('/login', function (req, res) {
   res.render('user/login');
 });
