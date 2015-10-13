@@ -8,8 +8,7 @@ var mongoose = require('mongoose'),
 
 var User = mongoose.model('user', {
   name: { type: String, required: true },
-  password: { type: String, required: true },
-  info: { type: String, required: true },
+  password: { type: String, required: true }
   });
 
 
