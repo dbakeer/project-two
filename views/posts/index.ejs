@@ -3,13 +3,23 @@
 <% posts.forEach(function (posts){ %>
   <div class ="posts">
     <p>
-      <%= posts.title %> --- <%= posts.author %> --- <%= posts.content %>
+      <div class = "post-title">
+        <%= posts.title %></br>
+        <h5>Posted by: <%= posts.author %></h5>
+      </div>
+      <div class = "post-content">
+      <%= posts.content %>
+    </div>
+    <div class = "post-options">
+      <!-- [<a href = "/posts/<%= posts.id %>/edit">EDIT</a>] -->
 
-      [<a href = "/posts/<%= posts.id %>/edit">EDIT</a>]
+      <form action="/posts/<%= posts.id %>/edit" method="patch">  <input type="submit" value="Edit">
 
-      <form action="/posts/<%= posts.id %>?_method=DELETE"
-            method="post">
-        <input type="submit" value="Delete">
+
+      <form action="/posts/<%= posts.id %>?_method=DELETE" method="post">  <input type="submit" value="Delete">
+    </div>
+
+
       </form>
     </p>
     </div>
