@@ -60,8 +60,8 @@ db.once('open', function() {
 //////////////////// CONTROLLERS /////////////////////
 /////////////////////////////////////////////////////
 
-// var userController = require('./controllers/user.js');
-// server.use('/user', userController);
+var userController = require('./controllers/user.js');
+server.use('/user', userController);
 
 var postsController = require('./controllers/posts.js');
 server.use('/posts', postsController);
