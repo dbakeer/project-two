@@ -3,7 +3,14 @@ var express = require('express'),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
 // main page after logging in
-router.get('/index', function (req, res) {
+router.get('/index', function (req, res){
+  if (req.session.currentUser) {
+    res.render('user/index', {
+      currentUser: req.session.currentUser
+    });
+  } else {
+    res.redirect(302, '/user/login');
+  }
   res.render('user/index');
 });
 
