@@ -1,7 +1,6 @@
 /* Sitewide view */
 
 * {
-    font: inherit;
     box-sizing: border-box;
 }
 
@@ -10,5 +9,12 @@ html {
 }
 
 body {
+  font-size: 18px;
   background: deeppink;
+}
+
+#logo {
+  font-family: 'Creepster', cursive;
+  font-size: 36px;
+  margin: 0 auto;
 }

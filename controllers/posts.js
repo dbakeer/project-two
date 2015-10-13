@@ -16,6 +16,7 @@ router.get('/', function (req, res) {
   });
 });
 
+// the actual post action
 router.post('/', function (req, res){
   var posts = new Post(req.body.posts);
   console.log(req.body);
