@@ -99,11 +99,6 @@ body {
   margin-top: 50px;
 }
 
-#comment {
-  height: 200px;
-  width: 800px;
-}
-
 .post-comments {
   background: #D6D6D6;
   text-decoration: bold;

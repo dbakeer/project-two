@@ -10,10 +10,11 @@
 
 <h4 id = "commentheader">Comment!</h4>
 <form action="/posts/<%= posts._id %>" method="post" class="comments">
-    <input type="text"
-           name="posts[comments][body]"
-           placeholder="comment"
-           id = "comment">
+  <textarea class="form-control"
+            rows="3"
+            name="posts[comments][body]"
+            placeholder="comment"
+            id = "comment"></textarea>
     <input type = "submit"
            name="posts[comments]"
            value="SUBMIT"
