@@ -1,21 +1,44 @@
 <% posts.forEach(function (posts){ %>
+
+  <div class = "vote">
+
+    <button type="button" class="btn btn-default" aria-label="Arrow Up" id = "arrow-up">
+    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    </button>
+      <br/>
+    <button type="button" class="btn btn-default" aria-label="Arrow Down" id = "arrow-down">
+    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
   <div class ="posts">
-    <p>
+
+
       <div class = "post-title">
-      <a href="/posts/<%= posts.id %>"><%= posts.title %></a></br>
+
+        <a href="/posts/<%= posts.id %>"><%= posts.title %></a></br>
+
         <h5>Posted by: <%= posts.username %> on <%= posts.date %></h5>
+
       </div>
+
       <div class = "post-content">
-      <%= posts.content %>
-    </div>
+
+        <%= posts.content %>
+
+      </div>
+
     <div class = "post-options">
 
-<a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
+      <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
 
 
 <% if (currentUser === posts.username) { %>
+
       <form action="/posts/<%= posts.id %>/edit"
             method="patch">
+
       <input type="submit"
              value="Edit"
              id = "post-edit">
@@ -23,15 +46,18 @@
 
       <form action="/posts/<%= posts.id %>?_method=DELETE"
             method="post">
-        <input type="submit"
-               value="Delete"
-               id = "post-edit"></form>
+      <input type="submit"
+             value="Delete"
+             id = "post-edit"></form>
       </form>
 
 
     </div>
+
 <% } %>
 
     </p>
+
     </div>
+
 <% }) %>

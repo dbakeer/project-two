@@ -118,4 +118,25 @@ router.post('/:id', function (req, res) {
   });
 });
 
+// upvote
+// router.post('/:id/upvote', function (req, res) {
+//   Post.findOne({_id: req.params.id}, function (err, post){
+//     post.vote = post.votes.filter(function (vote) {
+//       return vote.user_id === req.body.userID;
+//     })[0].type;
+//     res.send(post);
+//   });
+// });
+
+
+// downvote
+// router.post('/:id/downvote', function (req, res) {
+//   Post.findOne({_id: req.params.id}, function (err, post){
+//     post.vote = post.votes.filter(function (vote) {
+//       return vote.user_id === req.body.userID;
+//     })[0].type;
+//     res.send(post);
+//   });
+// });
+
 module.exports = router;
