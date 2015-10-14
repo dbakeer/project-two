@@ -2,7 +2,8 @@ var express = require('express'),
     router  = express.Router(),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
-// main page after logging in
+
+// MAIN PAGE AFTER LOGGING IN
 router.get('/index', function (req, res){
   if (req.session.currentUser) {
     res.render('user/index', {
@@ -14,7 +15,7 @@ router.get('/index', function (req, res){
   res.render('user/index');
 });
 
-// new user page
+// CREATE A NEW USER
 router.get('/new', function (req, res) {
   res.render('user/new');
 });
@@ -28,6 +29,7 @@ router.post('/', function (req, res) {
   });
 });
 
+// LOGIN
 router.get('/login', function (req, res){
   res.render('user/login');
 });

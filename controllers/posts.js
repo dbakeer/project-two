@@ -111,8 +111,9 @@ router.patch('/:id', function (req, res) {
 // comments
 router.post('/:id', function (req, res) {
   var newComment = req.body.posts;
-  newComment.comment.username = req.session.currentUser;
-  newComment.comment.date = Date.now();
+
+  newComment.comments.username = req.session.currentUser;
+  newComment.comments.date = Date.now();
   console.log(newComment);
 
   Post.update(
