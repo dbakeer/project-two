@@ -93,7 +93,6 @@ router.patch('/:id', function (req, res) {
         if (errTwo) {
           console.log("ERROR UPDATING");
         } else {
-          console.log("UPDATED!");
           res.redirect(302, "/posts");
         }
       });
@@ -119,24 +118,16 @@ router.post('/:id', function (req, res) {
 });
 
 // upvote
-// router.post('/:id/upvote', function (req, res) {
-//   Post.findOne({_id: req.params.id}, function (err, post){
-//     post.vote = post.votes.filter(function (vote) {
-//       return vote.user_id === req.body.userID;
-//     })[0].type;
-//     res.send(post);
-//   });
-// });
+router.post('/:id/upvote', function (req, res) {
+  var postID = req.params.id;
+  var vote = req.body.vote;
+});
 
 
 // downvote
-// router.post('/:id/downvote', function (req, res) {
-//   Post.findOne({_id: req.params.id}, function (err, post){
-//     post.vote = post.votes.filter(function (vote) {
-//       return vote.user_id === req.body.userID;
-//     })[0].type;
-//     res.send(post);
-//   });
-// });
+router.post('/:id/downvote', function (req, res) {
+
+});
+
 
 module.exports = router;
