@@ -108,8 +108,8 @@ router.post('/:id', function (req, res) {
   newComment.comments.date = Date.now();
 
   Post.update(
-    {_id: req.params.id},
-    {$push: newComment},
+    { _id: req.params.id },
+    { $push: newComment },
     function (){
     (res.redirect('/posts/')
     );
@@ -118,32 +118,18 @@ router.post('/:id', function (req, res) {
 
 // upvote
 router.post('/:id/upvote', function (req, res) {
-  var postID = req.params.id;
-
-  Post.findOne( req.params.id, function (err, posts) {
-      Post.update(
-        { _id: postID },
-        { $inc: { vote : 1 }},
-        function (err, data) {
-          if (err) {
-            console.log("Couldn't upvote");
-          } else {
-            console.log("Success!");
-            res.redirect(302, '/posts/');
-        }
-      });
-  });
+  
+  Post.update(
+    { _id: req.params.id },
+    { $inc: { vote : 1 } },
+    function (err, vote) {
+      if (err) {
+        console.log(err);
+      } else {
+      (res.redirect('/posts/'));
+      }
+    });
 });
-
-// router.post('/:id/upvote', function (req, res) {
-//   var postID = req.params.id;
-//
-//   Post.findOne( { postID } ), function (err, posts) {
-//     posts.vote.$inc(1);
-//     posts.save();
-//     res.redirect(302, '/posts/');
-//   };
-// });
 
 // downvote
 
