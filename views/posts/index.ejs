@@ -9,14 +9,16 @@
       <%= posts.content %>
     </div>
     <div class = "post-options">
+<% }) %>
 
+<% if (currentUser === posts.username) { %>
       <form action="/posts/<%= posts.id %>/edit"
             method="patch">
       <input type="submit"
              value="Edit"
              id = "post-edit">
       </form>
-
+<% } %>
       <form action="/posts/<%= posts.id %>?_method=DELETE"
             method="post">
         <input type="submit"
@@ -30,4 +32,3 @@
 
     </p>
     </div>
-<% }) %>

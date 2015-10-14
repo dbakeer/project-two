@@ -70,19 +70,11 @@ router.delete('/:id', function (req, res) {
 
 // edit a post
 router.get('/:id/edit', function (req, res) {
-  var postID = req.params.id;
-
-  Post.findOne({
-    _id: postID
-  }, function (err, foundPost) {
-    if (err) {
-      res.write("YOUR POST ID IS BAD");
-      res.end();
-    } else {
-      res.render('posts/edit', {
-        posts: foundPost
-      });
-    }
+  Post.findById(req.params.id, function (err, foundPost) {
+    res.render('posts/edit', {
+      posts: foundPost,
+      currentUser: req.session.currentUser
+    });
   });
 });
 
