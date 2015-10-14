@@ -3,8 +3,29 @@ var express = require('express'),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
 
+// LOGIN
+router.get('/login', function (req, res){
+  res.render('user/login');
+});
+
+router.post('/login', function (req, res) {
+  var attempt = req.body.user;
+
+  User.findOne(
+    { username: attempt.username },
+    function (err, user) {
+      if (user) {
+        if (user && user.password === attempt.password) {
+          req.session.currentUser = user.username;
+
+          res.redirect(302, '/user/index');
+        } else {
+          res.send('Bad username or password');
+   }}});
+});
+
 // MAIN PAGE AFTER LOGGING IN
-router.get('/index', function (req, res){
+router.get('/index', function (req, res) {
   if (req.session.currentUser) {
     res.render('user/index', {
       currentUser: req.session.currentUser
@@ -12,7 +33,6 @@ router.get('/index', function (req, res){
   } else {
     res.redirect(302, '/user/login');
   }
-  res.render('user/index');
 });
 
 // CREATE A NEW USER
@@ -29,31 +49,15 @@ router.post('/', function (req, res) {
   });
 });
 
-// LOGIN
-router.get('/login', function (req, res){
-  res.render('user/login');
-});
+// router.get('/:id', function (req, res) {
+//   User.findById(req.params.id, function (err, user){
+//   });
+// });
 
-router.post('/login', function (req, res) {
-  var attempt = req.body.user;
-
-  User.findOne({ username: attempt.username }, function (err, user){
-    if (user) {
-      if (user && user.password === attempt.password) {
-        req.session.currentUser = user.username;
-
-        res.redirect(302, '/user/index');
-      }
-    } else {
-      res.redirect(302, '/user/login');
-    }
-  });
-});
-
-router.get('/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user){
-    console.log(user);
-  });
+// logout
+router.get('/logout', function (req, res) {
+  delete req.session.currentUser;
+  res.redirect('/user/login');
 });
 
 module.exports = router;
