@@ -49,15 +49,12 @@ router.post('/', function (req, res) {
   });
 });
 
-// router.get('/:id', function (req, res) {
-//   User.findById(req.params.id, function (err, user){
-//   });
-// });
-
 // logout
 router.get('/logout', function (req, res) {
   delete req.session.currentUser;
   res.redirect('/user/login');
 });
+
+
 
 module.exports = router;
