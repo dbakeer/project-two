@@ -8,8 +8,7 @@ var mongoose = require('mongoose'),
 
 var User = mongoose.model('user', {
   username: { type: String, required: true },
-  password: { type: String, required: true },
-  votedPosts : [{ _id : mongoose.Schema.Types.ObjectId , votetype: Number }]
+  password: { type: String, required: true }
   });
 
 

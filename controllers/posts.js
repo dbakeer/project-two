@@ -106,7 +106,6 @@ router.post('/:id', function (req, res) {
 
   newComment.comments.username = req.session.currentUser;
   newComment.comments.date = Date.now();
-  console.log(newComment);
 
   Post.update(
     {_id: req.params.id},
@@ -120,14 +119,36 @@ router.post('/:id', function (req, res) {
 // upvote
 router.post('/:id/upvote', function (req, res) {
   var postID = req.params.id;
-  var vote = req.body.vote;
+
+  Post.findOne( req.params.id, function (err, posts) {
+      Post.update(
+        { _id: postID },
+        { $inc: { vote : 1 }},
+        function (err, data) {
+          if (err) {
+            console.log("Couldn't upvote");
+          } else {
+            console.log("Success!");
+            res.redirect(302, '/posts/');
+        }
+      });
+  });
 });
 
+// router.post('/:id/upvote', function (req, res) {
+//   var postID = req.params.id;
+//
+//   Post.findOne( { postID } ), function (err, posts) {
+//     posts.vote.$inc(1);
+//     posts.save();
+//     res.redirect(302, '/posts/');
+//   };
+// });
 
 // downvote
-router.post('/:id/downvote', function (req, res) {
 
-});
+
+
 
 
 module.exports = router;
