@@ -118,7 +118,7 @@ router.post('/:id', function (req, res) {
 
 // upvote
 router.post('/:id/upvote', function (req, res) {
-  
+
   Post.update(
     { _id: req.params.id },
     { $inc: { vote : 1 } },
@@ -132,7 +132,19 @@ router.post('/:id/upvote', function (req, res) {
 });
 
 // downvote
+router.post('/:id/downvote', function (req, res) {
 
+  Post.update(
+    { _id: req.params.id },
+    { $inc: { vote : -1 } },
+    function (err, vote) {
+      if (err) {
+        console.log(err);
+      } else {
+      (res.redirect('/posts/'));
+      }
+    });
+});
 
 
 

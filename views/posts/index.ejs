@@ -1,19 +1,5 @@
 <% posts.forEach(function (posts){ %>
 
-  <!-- <div class = "vote">
-    <form action="/posts/<%= posts._id %>/upvote?_method=POST" method="post">
-      <button type="button" class="btn btn-default" aria-label="Arrow Up" id = "arrow-up" value="post">
-        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-      </button>
-    </form>
-
-    <form action="/posts/<%= posts._id %>/downvote?_method=POST" method="post">
-      <br/>
-      <button type="button" class="btn btn-default" aria-label="Arrow Down" id = "arrow-down" value = "post">
-      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-    </button>
-    </form> -->
-
     <form action="/posts/<%= posts.id %>/upvote?_method=POST"
           method="post">
     <input type="submit"
