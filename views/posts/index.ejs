@@ -10,7 +10,7 @@
     </div>
     <div class = "post-options">
 
-
+<a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
 
 
 <% if (currentUser === posts.username) { %>
@@ -28,7 +28,7 @@
                id = "post-edit"></form>
       </form>
 
-      <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
+
     </div>
 <% } %>
 

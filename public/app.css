@@ -91,6 +91,7 @@ body {
 #post-edit {
   float: right;
   margin-right: 5px;
+  margin-top: -20px;
 }
 
 #commentheader {
