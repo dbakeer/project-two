@@ -23,7 +23,7 @@
 <% posts.comments.forEach(function (comment, i) { %>
 <div class = "post-comments">
 <%= comment.body %><br/>
-Posted By: <%= currentUser %> --- <%= comment.date %><br/>
+Posted By: <%= comment.username %> --- <%= comment.date %><br/>
 
 </div>
 <% }) %>

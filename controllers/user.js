@@ -2,7 +2,6 @@ var express = require('express'),
     router  = express.Router(),
     Post    = require('../models/posts.js'),
     User    = require('../models/user.js');
-
 // main page after logging in
 router.get('/index', function (req, res){
   if (req.session.currentUser) {
@@ -24,11 +23,11 @@ router.post('/', function (req, res) {
   var newUser = User(req.body.user);
 
   newUser.save(function (err, user) {
-    res.redirect(301, '/user/' + user._id);
+    req.session.currentUser = req.body.user.username;
+    res.redirect(302, '/user/login');
   });
 });
 
-// LOGIN
 router.get('/login', function (req, res){
   res.render('user/login');
 });

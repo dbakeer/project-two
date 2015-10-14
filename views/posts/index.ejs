@@ -1,11 +1,9 @@
-<a href="/posts/new">Now make a new post, NERD.</a>
-
 <% posts.forEach(function (posts){ %>
   <div class ="posts">
     <p>
       <div class = "post-title">
       <a href="/posts/<%= posts.id %>"><%= posts.title %></a></br>
-        <h5>Posted by: <%= posts.author %> on <%= posts.date %></h5>
+        <h5>Posted by: <%= posts.username %> on <%= posts.date %></h5>
       </div>
       <div class = "post-content">
       <%= posts.content %>

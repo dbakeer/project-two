@@ -44,7 +44,7 @@ router.get('/:id', function (req, res){
 // the actual post action
 router.post('/', function (req, res){
   var posts = new Post(req.body.posts);
-  posts.author = req.session.currentUser;
+  posts.username = req.session.currentUser;
   posts.save(function (err, newPost){
     if (err){
       res.redirect(302, 'posts/new');
@@ -110,8 +110,9 @@ router.patch('/:id', function (req, res) {
 
 // comments
 router.post('/:id', function (req, res) {
-  var newComment = req.body.post;
-  newComment.comments.author = req.session.currentUser;
+  var newComment = req.body.posts;
+  newComment.comment.username = req.session.currentUser;
+  newComment.comment.date = Date.now();
   console.log(newComment);
 
   Post.update(
