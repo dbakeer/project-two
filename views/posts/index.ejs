@@ -9,7 +9,9 @@
       <%= posts.content %>
     </div>
     <div class = "post-options">
-<% }) %>
+
+
+
 
 <% if (currentUser === posts.username) { %>
       <form action="/posts/<%= posts.id %>/edit"
@@ -18,7 +20,7 @@
              value="Edit"
              id = "post-edit">
       </form>
-<% } %>
+
       <form action="/posts/<%= posts.id %>?_method=DELETE"
             method="post">
         <input type="submit"
@@ -28,7 +30,8 @@
 
       <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
     </div>
-
+<% } %>
 
     </p>
     </div>
+<% }) %>

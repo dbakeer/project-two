@@ -10,7 +10,8 @@ router.get('/', function (req, res) {
       res.redirect(302, 'posts/index');
     } else {
       res.render('posts/index', {
-        posts: allPosts
+        posts: allPosts,
+        currentUser: req.session.currentUser
       });
     }
   });
