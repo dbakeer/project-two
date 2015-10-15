@@ -6,15 +6,15 @@ var express = require('express'),
 // USER AUTHENTICATION
 function checkAuth(req, res, next) {
   if (!req.session.currentUser) {
-    res.send('You must be signed up or logged in to view this page.');
+    res.redirect('/user/login');
   } else {
     next();
   }
 }
 
-// show all posts
+// SHOW ALL POSTS
 router.get('/', checkAuth, function (req, res) {
-  Post.find({}, function (err, allPosts) {
+  Post.find({}).sort({date: -1}).exec(function (err, allPosts) {
     if (err) {
       res.redirect(302, 'posts/index');
     } else {
@@ -25,6 +25,7 @@ router.get('/', checkAuth, function (req, res) {
     }
   });
 });
+
 
 // link in current user session
 router.get('/new', function (req, res) {

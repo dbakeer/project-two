@@ -138,26 +138,6 @@ body {
 
 }
 
-#arrow-up {
-  margin-bottom: 25px;
-  height: 75px;
-  width: 75px;
-  font-size: 30px;
-  padding: 0;``
-  border: none;
-  background: none;
-}
-
-#arrow-down {
-  height: 75px;
-  width: 75px;
-  font-size: 30px;
-  padding: 0;
-  border: none;
-  background: none;
-  decoration: none;
-}
-
 h1 {
   text-align: center;
 }
