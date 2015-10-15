@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 #navlink {
@@ -58,7 +58,7 @@ h1 {
 }
 
 .posts {
-  margin-left: 200px;
+  float: left;
   width: 800px;
 }
 
@@ -206,4 +206,28 @@ h1 {
 }
 .modal-backdrop.in:nth-of-type(even) {
     z-index: 1041 !important;
+}
+
+#mainpagelink {
+  height: 100px;
+  width: 200px;
+  border-radius: 5px;
+  decoration: none;
+  margin: 500px 0 0 400px;
+}
+
+input[type=submit] {
+  background: #CC0000 !important;
+  border-radius: 25% !important;
+  border: 1px black !important;
+  decoration: none !important;
+  font-size: 18px !important;
+}
+
+input[type=submit]:hover {
+  background: none !important;
+  border-radius: 25% !important;
+  border: 1px black !important;
+  decoration: none !important;
+  font-size: 18px !important;
 }

@@ -20,30 +20,29 @@
 
     <div class = "post-options">
 
+
       <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
+
+      <div class = "votes">
+        <form action="/posts/<%= posts.id %>/upvote?_method=POST"
+            method="post" class = "vote up" class = "up">
+            <button type="submit">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </button>
+        </form>
+
+        <div class="count"><%= posts.vote %></div>
+        
+        <form action="/posts/<%= posts.id %>/downvote?_method=POST"
+            method="post" class = "vote" class = "down">
+            <button type="submit">
+              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </button>
+          </form>
+    </div>
 
 
 <% if (currentUser === posts.username) { %>
-
-    <div class = "votes">
-      <form action="/posts/<%= posts.id %>/upvote?_method=POST"
-          method="post" class = "vote up" class = "up">
-          <button type="submit">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-          </button>
-      </form>
-
-
-      <div class="count"><%= posts.vote %></div>
-
-
-      <form action="/posts/<%= posts.id %>/downvote?_method=POST"
-          method="post" class = "vote" class = "down">
-          <button type="submit">
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-          </button>
-        </form>
-  </div>
 
       <form action="/posts/<%= posts.id %>/edit"
             method="patch">
