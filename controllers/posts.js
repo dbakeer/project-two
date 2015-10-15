@@ -6,7 +6,7 @@ var express = require('express'),
 // USER AUTHENTICATION
 function checkAuth(req, res, next) {
   if (!req.session.currentUser) {
-    res.send('You are not authorized to view this page');
+    res.send('You must be signed up or logged in to view this page.');
   } else {
     next();
   }
@@ -126,22 +126,22 @@ router.post('/:id', function (req, res) {
 });
 
 // upvote
-router.post('/:id/upvote', function (req, res) {
+router.post('/:id/upvote', function (req, res, next) {
 
   Post.update(
     { _id: req.params.id },
     { $inc: { vote : 1 } },
     function (err, vote) {
       if (err) {
-        console.log(err);
+      console.log(err);
       } else {
-      (res.redirect('/posts/'));
+      console.log(vote);
       }
     });
 });
 
 // downvote
-router.post('/:id/downvote', function (req, res) {
+router.post('/:id/downvote', function (req, res, next) {
 
   Post.update(
     { _id: req.params.id },
@@ -150,7 +150,7 @@ router.post('/:id/downvote', function (req, res) {
       if (err) {
         console.log(err);
       } else {
-      (res.redirect('/posts/'));
+      console.log(vote);
       }
     });
 });

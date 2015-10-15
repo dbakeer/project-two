@@ -27,19 +27,22 @@
 
     <div class = "votes">
       <form action="/posts/<%= posts.id %>/upvote?_method=POST"
-          method="post">
+          method="post" class = "increment up">
           <button type="submit">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
           </button>
       </form>
 
+
+      <div class="count"><%= posts.vote %></div>
+
+
       <form action="/posts/<%= posts.id %>/downvote?_method=POST"
-          method="post">
+          method="post" class = "increment down">
           <button type="submit">
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
           </button>
         </form>
-
   </div>
 
       <form action="/posts/<%= posts.id %>/edit"
