@@ -16,12 +16,14 @@
 
 <h5 id = "edittags">Content</h5>
 <br/>
-<div class="form-group" id = "postedit" id = "postcontent">
-  <input type="text"
-         name="posts[content]"
-         placeholder="What do you want to say?"
-         value = "<%= posts.content %>"
-         id = "contentedit"></br>
+<div class="form-group" id = "postedit" >
+  <textarea id = "contentedit"
+            name="posts[content]"
+            value = "<%= posts.content %>"
+            placeholder = "Write your post here!">
+
+  </textarea>
+</br>
 </div>
 
   <button type="submit" class="btn btn-default" id = "editsubmit">Submit</button>
