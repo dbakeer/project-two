@@ -1,21 +1,35 @@
-<div id = "loginuser">
-<h1>Login</h1>
-<div id = "login">
-<form action="/user/login" method="post">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Log In
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/user/login" method="post">
 
 
-  <input type="text"
-         name="user[username]"
-         placeholder="usernname"
-         id = "username"></br>
+          <input type="text"
+                 name="user[username]"
+                 placeholder="usernname"
+                 id = "username"></br>
 
-  <input type="password"
-         name="user[password]"
-         placeholder="Password"
-         id = "password"></br>
+          <input type="password"
+                 name="user[password]"
+                 placeholder="Password"
+                 id = "password"></br>
 
-  <button type="submit">Login</button>
-  <br/>
-  <a href = "/user/new">Or Sign Up if You're New!</a>
-</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Log In</button>
+      </form>
+      </div>
+    </div>
+  </div>
 </div>

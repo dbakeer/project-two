@@ -1,3 +1,4 @@
+// UPVOTE DOWNVOTE TOGGLE
 $(function (){
   $(".vote").click(
     function(){
@@ -13,4 +14,10 @@ $(function (){
         $("~ .count", this).text(downvote);
       }
   });
+});
+
+
+// LOGIN MODAL CONTROL
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus();
 });

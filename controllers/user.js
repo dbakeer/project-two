@@ -49,7 +49,7 @@ router.post('/', function (req, res) {
   });
 });
 
-// logout
+// LOGOUT
 router.get('/logout', function (req, res) {
   delete req.session.currentUser;
   res.redirect('/');

@@ -20,10 +20,16 @@ body {
 
 #logo {
   font-family: 'Creepster', cursive;
-  font-size: 75px;
+  font-size: 75px !important;
   margin-top: -20px;
   margin-left: -15px;
   color: #CC0000;
+}
+
+h1 {
+  font-family: 'Creepster', cursive !important;
+  font-size: 48px !important;
+  color: #B20000 !important;
 }
 
 .post-title {
@@ -136,10 +142,6 @@ body {
   margin-top: -15px;
   margin-right: 50px;
 
-}
-
-h1 {
-  text-align: center;
 }
 
 #edituser {
