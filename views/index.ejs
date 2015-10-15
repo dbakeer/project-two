@@ -1,3 +1,21 @@
-<h1>Home Page</h1>
+<div id = "loginuser">
+<h1>Login</h1>
+<div id = "login">
+<form action="/user/login" method="post">
 
-<a href="/user/new">Sign Up To View Posts!</a>
+
+  <input type="text"
+         name="user[username]"
+         placeholder="usernname"
+         id = "username"></br>
+
+  <input type="password"
+         name="user[password]"
+         placeholder="Password"
+         id = "password"></br>
+
+  <button type="submit">Login</button>
+  <br/>
+  <a href = "/user/new">Or Sign Up if You're New!</a>
+</div>
+</div>

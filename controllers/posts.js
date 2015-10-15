@@ -3,8 +3,17 @@ var express = require('express'),
     Post   = require('../models/posts.js'),
     User   = require('../models/user.js');
 
+// USER AUTHENTICATION
+function checkAuth(req, res, next) {
+  if (!req.session.currentUser) {
+    res.send('You are not authorized to view this page');
+  } else {
+    next();
+  }
+}
+
 // show all posts
-router.get('/', function (req, res) {
+router.get('/', checkAuth, function (req, res) {
   Post.find({}, function (err, allPosts) {
     if (err) {
       res.redirect(302, 'posts/index');
@@ -29,7 +38,7 @@ router.get('/new', function (req, res) {
 });
 
 // show individual post
-router.get('/:id', function (req, res){
+router.get('/:id', checkAuth, function (req, res){
   if (req.session.currentUser) {
     Post.findById(req.params.id, function (err, result) {
       res.render('posts/show', {
@@ -56,7 +65,7 @@ router.post('/', function (req, res){
 });
 
 // form to create new posts
-router.get('/new', function (req, res){
+router.get('/new', checkAuth, function (req, res){
   res.render('posts/new');
 });
 

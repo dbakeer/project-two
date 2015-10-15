@@ -1,47 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<style type="text/css">
-	.bs-example{
-    	margin: 20px;
-    }
-</style>
-</head>
+
+	<html lang="en">
+
+		<head>
+
+			<meta charset="UTF-8">
+
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		</head>
 
 
+		<body>
 
+			<div class="bs-example">
 
-<body>
-<div class="bs-example">
-    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+				<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+
         <!-- Brand and toggle get grouped for better mobile display -->
+
         <div class="container">
+
             <div class="navbar-header">
-                <a class="navbar-brand" href="/"><h1 id = "logo">RENEGADE</h1></a>
+                <a class="navbar-brand" href="/"><h1 id = "logo">VINYL FANTASY</h1></a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/posts/">Home</a></li>
-                    <li><a href="/user/">Profile</a></li>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b class="caret"></b></a>
+
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+						 <ul class="nav navbar-nav">
+
+								<li><a id = "navlink" href="/posts/">Home</a></li>
+
+								<li><a id = "navlink" href="/user/:id">Profile</a></li>
+
+								<li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/posts/">See All Posts</a></li>
                             <li><a href="/posts/new">New Post</a></li>
                             <li class="divider"></li>
-                            <li><a href="/user/login">Login</a></li>
 														<li><a href="/user/logout">Logout</a></li>
                         </ul>
+                </ul>
+
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

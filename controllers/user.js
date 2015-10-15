@@ -45,14 +45,14 @@ router.post('/', function (req, res) {
 
   newUser.save(function (err, user) {
     req.session.currentUser = req.body.user.username;
-    res.redirect(302, '/user/login');
+    res.redirect(302, '/user/index');
   });
 });
 
 // logout
 router.get('/logout', function (req, res) {
   delete req.session.currentUser;
-  res.redirect('/user/login');
+  res.redirect('/');
 });
 
 
