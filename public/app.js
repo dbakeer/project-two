@@ -17,7 +17,7 @@ $(function (){
 });
 
 
-// LOGIN MODAL CONTROL
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus();
+// LOGIN & SIGNUP MODALS
+$('#openBtn').click(function(){
+	$('#myModal').modal({show:true});
 });

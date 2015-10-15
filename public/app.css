@@ -200,3 +200,10 @@ h1 {
 #dropdown {
   margin-left: 125px;
 }
+
+.modal:nth-of-type(even) {
+    z-index: 1042 !important;
+}
+.modal-backdrop.in:nth-of-type(even) {
+    z-index: 1041 !important;
+}
