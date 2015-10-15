@@ -1,20 +1,28 @@
 <form action="/posts/<%= posts.id %>?_method=PATCH" method="post">
 
-<%= posts.author %>
+<h1>Edit Your Post</h1>
 
-<div class="form-group">
+<h4 id = "edituser">Original Author: <%= posts.username %></h4>
+
+<div class="form-group" id = "postedit">
+  <h5 id = "edittags">Title</h5>
+  <br/>
   <input type="text"
          name="posts[title]"
          placeholder="Title"
-         value = "<%= posts.title %>"></br>
+         value = "<%= posts.title %>"
+         id = "titleedit"></br>
 </div>
 
-<div class="form-group">
+<h5 id = "edittags">Content</h5>
+<br/>
+<div class="form-group" id = "postedit" id = "postcontent">
   <input type="text"
          name="posts[content]"
          placeholder="What do you want to say?"
-         value = "<%= posts.content %>"></br>
+         value = "<%= posts.content %>"
+         id = "contentedit"></br>
 </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default" id = "editsubmit">Submit</button>
 </form>
