@@ -190,3 +190,11 @@ h1 {
   margin-right: 450px;
   text-align: center;
 }
+
+#hamburger {
+  font-size: 36px;
+}
+
+#dropdown {
+  margin-left: 125px;
+}

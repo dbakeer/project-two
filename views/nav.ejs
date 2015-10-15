@@ -37,12 +37,14 @@
 
 						 <ul class="nav navbar-nav">
 
-								<li><a id = "navlink" href="/posts/">Home</a></li>
+								<li><a id = "navlink" href="/posts/popular"><button class = "btn-lg">Popular Posts</button></a></li>
 
-								<li><a id = "navlink" href="/user/:id">Profile</a></li>
+								<li><a id = "navlink" href="/posts/"><button class = "btn-lg">All Posts</button></a></li>
 
-								<li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b class="caret"></b></a>
+
+
+								<li class="dropdown" id = "dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" id = "hamburger"></span><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/posts/">See All Posts</a></li>
                             <li><a href="/posts/new">New Post</a></li>

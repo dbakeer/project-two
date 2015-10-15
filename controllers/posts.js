@@ -26,7 +26,7 @@ router.get('/', checkAuth, function (req, res) {
   });
 });
 
-// TOP RATED POSTS IN ORDER
+// TOP RATED POSTS
 router.get('/popular', checkAuth, function (req, res) {
   Post.find({}).sort('-vote').exec(function (err, allPosts) {
       res.render('posts/popular', {
