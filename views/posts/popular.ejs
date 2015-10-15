@@ -15,13 +15,13 @@
       <div class = "post-content">
 
         <%= posts.content %>
+        <br>
+            <a href="/posts/<%= posts.id %>" id="commentlink"><%= posts.comments.length %> Comments</a>
 
       </div>
 
     <div class = "post-options">
 
-
-      <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
 
       <div class = "votes">
         <form action="/posts/<%= posts.id %>/upvote?_method=POST"
@@ -30,9 +30,6 @@
               <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             </button>
         </form>
-
-        <div class="count"><%= posts.vote %></div>
-        
         <form action="/posts/<%= posts.id %>/downvote?_method=POST"
             method="post" class = "vote" class = "down">
             <button type="submit">
@@ -40,6 +37,9 @@
             </button>
           </form>
     </div>
+
+
+    <div class="count" id = "voting">Votes: <%= posts.vote %></div>
 
 
 <% if (currentUser === posts.username) { %>
@@ -67,5 +67,7 @@
     </p>
 
     </div>
+
+    <p>
 
 <% }) %>

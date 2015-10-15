@@ -15,33 +15,37 @@
       <div class = "post-content">
 
         <%= posts.content %>
+        <br>
+            <a href="/posts/<%= posts.id %>" id="commentlink"><%= posts.comments.length %> Comments</a>
 
       </div>
 
     <div class = "post-options">
 
 
-      <a href="/posts/<%= posts.id %>"><%= posts.comments.length %> Comments</a>
-
       <div class = "votes">
         <form action="/posts/<%= posts.id %>/upvote?_method=POST"
-            method="post" class = "vote up" class = "up">
-            <button type="submit">
-              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            method="post">
+            <button type="submit" class = "vote">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"
+              id = "plus"></span>
             </button>
         </form>
 
-
-        <div class="count"><%= posts.vote %></div>
-
-
         <form action="/posts/<%= posts.id %>/downvote?_method=POST"
-            method="post" class = "vote" class = "down">
-            <button type="submit">
-              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            method="post">
+            <button type="submit" class = "vote">
+              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"
+              id = "minus"></span>
             </button>
           </form>
+
     </div>
+
+        <div id="count">User Rating: <%= posts.vote %></div>
+
+
+
 
 
 <% if (currentUser === posts.username) { %>
@@ -69,5 +73,7 @@
     </p>
 
     </div>
+
+    <p>
 
 <% }) %>
