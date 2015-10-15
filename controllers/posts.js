@@ -26,6 +26,16 @@ router.get('/', checkAuth, function (req, res) {
   });
 });
 
+// TOP RATED POSTS IN ORDER
+router.get('/popular', checkAuth, function (req, res) {
+  Post.find({}).sort('-vote').exec(function (err, allPosts) {
+      res.render('posts/popular', {
+        posts: allPosts,
+        currentUser: req.session.currentUser
+      });
+  });
+});
+
 
 // link in current user session
 router.get('/new', function (req, res) {
