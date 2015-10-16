@@ -8,7 +8,7 @@
 
         <a href="/posts/<%= posts.id %>"><%= posts.title %></a></br>
 
-        <h5>Posted by: <%= posts.username %> on <%= posts.date %></h5>
+        <div id = "postdeets">Posted by: <%= posts.username %> on <%= posts.date %></div>
 
       </div>
 
@@ -26,23 +26,23 @@
       <div class = "votes">
         <form action="/posts/<%= posts.id %>/upvote?_method=POST"
             method="post">
-            <button type="submit" class = "vote">
-              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"
-              id = "plus"></span>
+            <button type="submit"
+                    class="glyphicon glyphicon-thumbs-up"
+                    class="upvote">
             </button>
         </form>
 
         <form action="/posts/<%= posts.id %>/downvote?_method=POST"
             method="post">
-            <button type="submit" class = "vote">
-              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"
-              id = "minus"></span>
+            <button type="submit"
+                    class="glyphicon glyphicon-thumbs-down"
+                    class="downvote">
             </button>
           </form>
 
     </div>
 
-        <div id="count">User Rating: <%= posts.vote %></div>
+        <div class="totalvotes">Rating  :  <%= posts.vote %></div>
 
 
 

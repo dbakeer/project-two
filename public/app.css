@@ -12,10 +12,28 @@ body {
   font-size: 18px !important;
 }
 
+a {
+  color: #B20000 !important;
+  background: white !important;
+}
+
+#welcome {
+  font-family: 'Creepster', cursive !important;
+  font-size: 24px !important;
+}
+
+.dropdown-menu {
+  color: #B20000 !important;
+  font-family: 'Creepster', cursive;
+  font-size: 24px !important;
+  float: right;
+}
+
 #navlink {
   color: #B20000;
   text-decoration: none;
   font-size: 20px;
+  font-family: 'Creepster', cursive;
 }
 
 #logo {
@@ -36,27 +54,26 @@ h1 {
   background: #D6D6D6;
   text-decoration: bold;
   height: 65px;
-  font-size: 20px;
-  border: 1px black solid;
+  font-size: 24px !important;
   padding: 5px 0 10px 10px;
+  font-family: 'Creepster', cursive;
 }
 
 .post-content {
   background: #ADADAD;
   font-size: 18px;
-  border: 1px black solid;
   padding: 10px 10px 10px 10px;
   overflow: auto;
-
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
 .post-options {
   background: #D6D6D6;
   font-size: 14px;
-  border: 1px black solid;
   padding: 15px 15px 15px 15px;
   height: 52px;
   width: 800px;
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
 .posts {
@@ -107,6 +124,7 @@ h1 {
   float: right;
   margin-right: 40px;
   margin-top: -25px;
+  font: 24px black;
 }
 
 #commentheader {
@@ -171,7 +189,7 @@ h1 {
 }
 
 #editsubmit {
-  margin-left: 600px;;
+  margin-left: 600px;
 }
 
 #myNavbar {
@@ -218,27 +236,32 @@ h1 {
   border-radius: 5px;
   decoration: none;
   margin: 500px 0 0 400px;
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
 input[type=submit] {
+  border-radius: 25% !important;
+  border: 1px black !important;
+  decoration: none !important;
+  font-size: 18px !important;
+  font: white !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  background: none !important;
+}
+
+input[type=submit]:hover {
   background: #CC0000 !important;
   border-radius: 25% !important;
   border: 1px black !important;
   decoration: none !important;
   font-size: 18px !important;
-}
-
-input[type=submit]:hover {
-  background: none !important;
-  border-radius: 25% !important;
-  border: 1px black !important;
-  decoration: none !important;
-  font-size: 18px !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
 #voting {
   margin-top: 5px;
   font-size: 18px !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
 .count {
@@ -249,4 +272,15 @@ input[type=submit]:hover {
   text-decoration: none;
   font-family: 'Creepster', cursive !important;
   font-size: 24px !important;
+}
+
+.totalvotes {
+  font-size: 18px !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+#postdeets {
+  font-size: 20px !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  margin-bottom: 10px;
 }
