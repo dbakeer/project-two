@@ -20,7 +20,7 @@ router.post('/login', function (req, res) {
 
           res.redirect(302, '/user/index');
         } else {
-          res.send('Bad username or password');
+          res.redirect('user/login');
    }}});
 });
 
@@ -46,6 +46,34 @@ router.post('/', function (req, res) {
   newUser.save(function (err, user) {
     req.session.currentUser = req.body.user.username;
     res.redirect(302, '/user/index');
+  });
+});
+
+// SUBSCRIPTIONS/PULL BOX REQUEST
+router.get('/:id', function (req, res){
+  if (req.session.currentUser) {
+    User.findById(req.params.id, function (err, result) {
+      res.render('user/subs', {
+        user: result,
+        currentUser: req.session.currentUser
+      });
+    });
+  } else {
+    res.redirect(302, '/user/new');
+  }
+});
+
+router.post('/:id', function (req, res) {
+  var newSub = req.body.user;
+
+  newSub.username = req.session.currentUser;
+
+  User.update(
+    { _id: req.params.id },
+    { $push: newSub },
+    function (){
+    (res.redirect('/user/')
+    );
   });
 });
 

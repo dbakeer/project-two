@@ -14,6 +14,7 @@ var PORT           = process.env.PORT || 3000,
     session        = require('express-session'),
     methodOverride = require('method-override'),
     expressLayouts = require('express-ejs-layouts'),
+    flash          = require('connect-flash'),
     Schema         = mongoose.Schema;
 
 /////////////////////////////////////////////////////
@@ -38,6 +39,13 @@ server.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+server.use(flash());
+server.use(function(req, res, next){
+    res.locals.success = req.flash('success');
+    res.locals.errors = req.flash('error');
+    next();
+});
 
 ///////////////////////////////////////////////////////
 //////////////////// DATABASE  ///////////////////////

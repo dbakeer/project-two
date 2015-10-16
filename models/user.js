@@ -8,7 +8,8 @@ var mongoose = require('mongoose'),
 
 var User = mongoose.model('user', {
   username: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  subs: [{ type: String }]
   });
 
 

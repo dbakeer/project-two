@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+ul {
+  list-style-type: none;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  font-size: 24px !important;
+}
+
 html {
   font-size: 18px;
 }
@@ -15,11 +21,12 @@ body {
 a {
   color: #B20000 !important;
   background: white !important;
+
 }
 
 #welcome {
   font-family: 'Creepster', cursive !important;
-  font-size: 24px !important;
+  font-size: 48px !important;
 }
 
 .dropdown-menu {
@@ -234,9 +241,10 @@ h1 {
   height: 100px;
   width: 200px;
   border-radius: 5px;
-  decoration: none;
+  text-decoration: none;
   margin: 500px 0 0 400px;
   font-family: 'Open Sans Condensed', sans-serif !important;
+  margin-bottom: 100px;
 }
 
 input[type=submit] {

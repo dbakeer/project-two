@@ -13,7 +13,8 @@ var Post = mongoose.model('posts', {
   content: { type: String, required: true },
   comments: [{ body: String, date: { type: Date, default: Date.now}, username: String }],
   date: { type: Date, default: Date.now },
-  vote: { type: Number }
+  vote: { type: Number },
+  tags: { type: String }
 });
 
 
